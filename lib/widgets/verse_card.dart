@@ -29,7 +29,7 @@ class VerseCard extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 4,
+              height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -54,7 +54,7 @@ class VerseCard extends StatelessWidget {
                                 bottomLeft: Radius.circular(40.0),
                               ),
                               shape: BoxShape.rectangle,
-                              color: Colors.grey.withAlpha(125),
+                              color: Colors.grey.withAlpha(80),
                             ),
                             child: IconButton(
                               icon: Icon(
