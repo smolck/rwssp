@@ -43,7 +43,7 @@ class SearchBar extends StatelessWidget {
                           builder: (ctx) => SettingsPage(),
                         )),
                     icon: Icon(Icons.settings),
-                    color: palette['pink'],
+                    color: palette['red'],
                   ),
                 ],
               ),

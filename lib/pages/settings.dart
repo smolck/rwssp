@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../styles.dart';
+import './info.dart';
+import '../widgets/widgets.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -65,8 +67,12 @@ class SettingsPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               GestureDetector(
-                onTap: () => print(
-                    'Tapped info on RWSSP'), // TODO: Navigate to Info page.
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => InfoPage(),
+                  ),
+                ),
                 child: Row(
                   children: <Widget>[
                     Padding(
@@ -74,15 +80,15 @@ class SettingsPage extends StatelessWidget {
                       child: Icon(
                         Icons.info_outline,
                         size: 40.0,
-                        color: palette['pink'],
+                        color: palette['red'],
                       ),
                     ),
                     Text(
-                      'Information on R-W-S-S-P',
+                      'What exactly is R-W-S-S-P?',
                       style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontSize: 24.0,
-                        color: palette['pink'],
+                        color: palette['red'],
                       ),
                     ),
                   ],
@@ -98,13 +104,13 @@ class SettingsPage extends StatelessWidget {
                           topLeft: Radius.circular(40.0),
                           bottomLeft: Radius.circular(40.0),
                         ),
-                        color: palette['pink'].withAlpha(30),
+                        color: palette['red'].withAlpha(30),
                       ),
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: Icon(
                           Icons.favorite,
-                          color: palette['pink'],
+                          color: palette['red'],
                           size: 15.0,
                         ),
                       ),
@@ -123,6 +129,8 @@ class SettingsPage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: bottomNavBar(context, currentPage: AppPage.Settings,
+          onTapHandler: (index) => print('TODO: Bottom Nav Bar!')),
     );
   }
 }

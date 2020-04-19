@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rwssp/widgets/app_bar.dart';
-import './styles.dart';
 import './pages/home.dart';
 import './widgets/widgets.dart';
 
@@ -37,6 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.white,
       appBar: appBar(context),
       body: HomePage(),
+      bottomNavigationBar: bottomNavBar(
+        context,
+        currentPage: AppPage.Home,
+        onTapHandler: (index) => {
+          // TODO: Global state so I can see which page is the current one.
+        },
+      ),
     );
   }
 }

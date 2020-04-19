@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../styles.dart';
 
-PreferredSize appBar(BuildContext context) {
+PreferredSize appBar(BuildContext context, {List<TextSpan> text}) {
   return PreferredSize(
     preferredSize: Size(double.infinity, 110),
     child: Container(
@@ -12,13 +12,14 @@ PreferredSize appBar(BuildContext context) {
         padding: EdgeInsets.fromLTRB(10, 40, 0, 0),
         child: RichText(
           text: TextSpan(
-            children: <TextSpan>[
-              TextSpan(text: 'Read it. ', style: appBarTextStyle),
-              TextSpan(text: 'Write it. ', style: appBarTextStyle),
-              TextSpan(text: 'Sing it. ', style: appBarTextStyle),
-              TextSpan(text: 'Say it. ', style: appBarTextStyle),
-              TextSpan(text: 'Pray it.', style: appBarTextStyle),
-            ],
+            children: text ??
+                <TextSpan>[
+                  TextSpan(text: 'Read it. ', style: appBarTextStyle),
+                  TextSpan(text: 'Write it. ', style: appBarTextStyle),
+                  TextSpan(text: 'Sing it. ', style: appBarTextStyle),
+                  TextSpan(text: 'Say it. ', style: appBarTextStyle),
+                  TextSpan(text: 'Pray it.', style: appBarTextStyle),
+                ],
           ),
         ),
       ),
