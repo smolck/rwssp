@@ -46,11 +46,6 @@ class HomePage extends StatelessWidget {
                   text: snapshot.data.text,
                   reference: snapshot.data.ref,
                 ),
-                VerseCard(
-                  header: 'Suggested Verse',
-                  text: 'Foo bar bar bar foo bar bar bar foo bar bar bar',
-                  reference: 'TODO: REFERENCE',
-                ),
               ],
             );
           } else {
