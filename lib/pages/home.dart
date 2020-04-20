@@ -35,22 +35,23 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<_Verse>(
-        future: fetchVerseOfDay(),
-        builder: (BuildContext context, AsyncSnapshot<_Verse> snapshot) {
-          if (snapshot.hasData) {
-            return Column(
-              children: <Widget>[
-                SearchBar(),
-                VerseCard(
-                  header: 'Verse of the Day', // TODO: "Powered by YouVersion"
-                  text: snapshot.data.text,
-                  reference: snapshot.data.ref,
-                ),
-              ],
-            );
-          } else {
-            return Center(child: CircularProgressIndicator()); // TODO
-          }
-        });
+      future: fetchVerseOfDay(),
+      builder: (BuildContext context, AsyncSnapshot<_Verse> snapshot) {
+        if (snapshot.hasData) {
+          return Column(
+            children: <Widget>[
+              SearchBar(),
+              VerseCard(
+                header: 'Verse of the Day', // TODO: "Powered by YouVersion"
+                text: snapshot.data.text,
+                reference: snapshot.data.ref,
+              ),
+            ],
+          );
+        } else {
+          return Center(child: CircularProgressIndicator()); // TODO
+        }
+      },
+    );
   }
 }

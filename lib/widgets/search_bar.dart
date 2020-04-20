@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rwssp/models/page_model.dart';
 import '../styles.dart';
-import '../pages/settings.dart';
 
 class SearchBar extends StatelessWidget {
   @override
@@ -36,14 +37,12 @@ class SearchBar extends StatelessWidget {
                     color: Colors.black,
                     thickness: 1.0,
                   ),
-                  IconButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (ctx) => SettingsPage(),
-                        )),
-                    icon: Icon(Icons.settings),
-                    color: palette['red'],
+                  Consumer<PageModel>(
+                    builder: (context, pageModel, _) => IconButton(
+                      onPressed: () => pageModel.setCurrentPage(AppPage.Settings),
+                      icon: Icon(Icons.settings),
+                      color: palette['red'],
+                    ),
                   ),
                 ],
               ),
