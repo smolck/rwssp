@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rwssp/models/page_model.dart';
+import 'package:outline_material_icons/outline_material_icons.dart';
+
 import '../styles.dart';
 
 class SearchBar extends StatelessWidget {
@@ -40,7 +42,7 @@ class SearchBar extends StatelessWidget {
                   Consumer<PageModel>(
                     builder: (context, pageModel, _) => IconButton(
                       onPressed: () => pageModel.setCurrentPage(AppPage.Settings),
-                      icon: Icon(Icons.settings),
+                      icon: Icon(OMIcons.settings),
                       color: palette['red'],
                     ),
                   ),

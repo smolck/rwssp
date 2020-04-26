@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:outline_material_icons/outline_material_icons.dart';
+
 import '../styles.dart';
 import './info.dart';
 
@@ -23,7 +25,7 @@ class SettingsPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Icon(
-                      Icons.info_outline,
+                      OMIcons.info,
                       size: 40.0,
                       color: palette['red'],
                     ),

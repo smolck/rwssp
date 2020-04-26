@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rwssp/styles.dart';
 import 'package:rwssp/models/page_model.dart' show AppPage;
+import 'package:outline_material_icons/outline_material_icons.dart';
 
 Container bottomNavBar(BuildContext context,
     {@required int currentIndex, @required Function(AppPage) onTapHandler}) {
@@ -18,25 +19,19 @@ Container bottomNavBar(BuildContext context,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.home,
-            // color: currentPage == AppPage.Home ? palette['red'] : Colors.black,
+            OMIcons.home,
           ),
           title: Text('Home'),
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.favorite_border,
-            // color: currentPage == AppPage.Favorites
-                // ? palette['red']
-                // : Colors.black,
+            OMIcons.favorite,
           ),
           title: Text('Favorites'),
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.settings,
-            // color:
-                // currentPage == AppPage.Settings ? palette['red'] : Colors.black,
+            OMIcons.settings,
           ),
           title: Text('Settings'),
         ),
