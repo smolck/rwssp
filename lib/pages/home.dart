@@ -18,8 +18,10 @@ Future<_Verse> fetchVerseOfDay() async {
     await rootBundle.loadString('assets/secrets.json'),
   )['youversion_dev_token'];
 
+  final date = DateTime.now().day;
+
   final resp = await http.get(
-    'https://developers.youversionapi.com/1.0/verse_of_the_day/1?version_id=1', // TODO: Version id conf
+    'https://developers.youversionapi.com/1.0/verse_of_the_day/$date?version_id=1', // TODO: Version id conf
     headers: {
       'accept': 'application/json',
       'x-youversion-developer-token': devToken,
