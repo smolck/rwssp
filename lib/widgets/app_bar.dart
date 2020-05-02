@@ -132,20 +132,58 @@ PreferredSize _settingsPageAppBar(BuildContext context) {
   );
 }
 
-// TODO
-/* PreferredSize _infoPageAppBar(BuildContext context) {
-  return PreferredSize(
-      preferredSize: Size(double.infinity, 100),
-      child: Container(
+PreferredSize _infoPageAppBar(BuildContext context) {
+  final backButton = Padding(
+    padding: EdgeInsets.only(left: 16.0, top: 16.0),
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: Consumer<PageModel>(
+        builder: (context, pageModel, _) => IconButton(
+          onPressed: () => pageModel.setCurrentPage(AppPage.Settings),
+          icon: Icon(
+            Icons.arrow_back,
+            size: 24,
+            color: palette['black'],
+          ),
+        ),
       ),
+    ),
   );
-} */
+
+  return PreferredSize(
+    preferredSize: Size(double.infinity, 175),
+    child: Container(
+      width: MediaQuery.of(context).size.width,
+      height: 175,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.fromLTRB(10, 40, 0, 0),
+            child: RichText(
+              text: TextSpan(
+                text:
+                    'What Exactly Is "Read. Write it. Sing it. Say it. Pray it."?',
+                style: appBarTextStyle,
+              ),
+            ),
+          ),
+          backButton,
+        ],
+      ),
+    ),
+  );
+}
 
 PreferredSize appBar(BuildContext context, {List<TextSpan> text}) {
   var currentPage = Provider.of<PageModel>(context, listen: false).currentPage;
 
-  if (currentPage == AppPage.Settings) {
-    return _settingsPageAppBar(context);
+  switch (currentPage) {
+    case AppPage.Settings:
+      return _settingsPageAppBar(context);
+    case AppPage.Info:
+      return _infoPageAppBar(context);
+    default:
+      break;
   }
 
   return PreferredSize(

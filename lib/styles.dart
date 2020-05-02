@@ -8,6 +8,12 @@ const palette = {
 };
 
 TextStyle infoPageHeader = TextStyle(
+  color: palette['black'],
+  fontSize: 24.0,
+  fontFamily: 'Roboto',
+);
+
+TextStyle infoPageText = TextStyle(
   color: palette['grey'],
   fontSize: 20.0,
   fontFamily: 'Roboto',

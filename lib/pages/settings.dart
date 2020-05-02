@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:provider/provider.dart';
 
+import '../models/page_model.dart';
 import '../styles.dart';
 import './info.dart';
 
@@ -13,33 +15,32 @@ class SettingsPage extends StatelessWidget {
         padding: EdgeInsets.only(left: 24.0),
         child: Column(
           children: <Widget>[
-            GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => InfoPage(),
-                ),
-              ),
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Icon(
-                      OMIcons.info,
-                      size: 40.0,
-                      color: palette['red'],
-                    ),
+            Consumer<PageModel>(
+              builder: (context, pageModel, _) {
+                return GestureDetector(
+                  onTap: () => pageModel.setCurrentPage(AppPage.Info),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Icon(
+                          OMIcons.info,
+                          size: 40.0,
+                          color: palette['red'],
+                        ),
+                      ),
+                      Text(
+                        'What exactly is R-W-S-S-P?',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 24.0,
+                          color: palette['red'],
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    'What exactly is R-W-S-S-P?',
-                    style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 24.0,
-                      color: palette['red'],
-                    ),
-                  ),
-                ],
-              ),
+                );
+              },
             ),
             Row(
               children: <Widget>[

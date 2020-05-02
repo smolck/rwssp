@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rwssp/widgets/app_bar.dart';
-import './pages/home.dart';
-import './pages/settings.dart';
-import './widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:rwssp/models/page_model.dart';
+
+import './pages/home.dart';
+import './pages/settings.dart';
+import './pages/info.dart';
+import './widgets/widgets.dart';
+import './verse.dart';
 
 void main() {
   runApp(
@@ -31,6 +34,8 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
+  Future<Verse> _verseOfDay = fetchVerseOfDay();
+
   final String title;
 
   @override
@@ -48,6 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
           case AppPage.Settings:
             page = SettingsPage();
             currentIndex = 2;
+            break;
+          case AppPage.Info:
+            page = InfoPage();
+            currentIndex = 2;
+            break;
+          default:
             break;
           // TODO: Favorites page.
         }

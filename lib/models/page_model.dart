@@ -4,6 +4,7 @@ enum AppPage {
   Home,
   Favorites,
   Settings,
+  Info,
 }
 
 class PageModel extends ChangeNotifier {

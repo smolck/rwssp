@@ -3,6 +3,7 @@ import 'package:rwssp/styles.dart';
 import 'package:rwssp/models/page_model.dart' show AppPage;
 import 'package:outline_material_icons/outline_material_icons.dart';
 
+
 Container bottomNavBar(BuildContext context,
     {@required int currentIndex, @required Function(AppPage) onTapHandler}) {
   return Container(
