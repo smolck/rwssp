@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  Future<Verse> _verseOfDay = fetchVerseOfDay();
+  final Future<Verse> _verseOfDay = fetchVerseOfDay();
 
   final String title;
 

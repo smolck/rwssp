@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               SearchBar(),
               VerseCard(
-                header: 'Verse of the Day', // TODO: "Powered by YouVersion"
+                header: 'Verse of the Day',
                 text: snapshot.data.text,
                 reference: snapshot.data.ref,
               ),
