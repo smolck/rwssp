@@ -21,9 +21,43 @@ class VerseCard extends StatelessWidget {
     return Center(
       child: Column(
         children: <Widget>[
-          Text(
-            _header,
-            style: TextStyle(fontFamily: 'Montserrat', fontSize: 17),
+          Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0, right: 8.0),
+                  child: RichText(
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Powered by ',
+                          style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontSize: 9,
+                            color: Colors.black,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'YouVersion',
+                          style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontSize: 9,
+                            color: palette['red'],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Text(
+                  _header,
+                  style: TextStyle(fontFamily: 'Montserrat', fontSize: 17),
+                ),
+              ),
+            ],
           ),
           Padding(
             padding: EdgeInsets.all(16.0),
@@ -73,6 +107,30 @@ class VerseCard extends StatelessWidget {
                         child: Text(
                           _text,
                           style: verseCardVerse,
+                        ),
+                      ),
+                    ),
+                    Spacer(),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: RaisedButton(
+                          child: Padding(
+                            padding: EdgeInsets.all(6.0),
+                            child: Text(
+                              'START',
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  color: Colors.white,
+                                  letterSpacing: 2.0),
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          // TODO
+                          onPressed: () => print('Pressed start button'),
+                          color: palette['red'],
                         ),
                       ),
                     ),
