@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Consumer<PageModel>(
       builder: (context, pageModel, _) {
-        Widget page = HomePage();
+        Widget page = HomePage(widget._verseOfDay);
         var currentIndex = 0;
         switch (pageModel.currentPage) {
           case AppPage.Settings:
