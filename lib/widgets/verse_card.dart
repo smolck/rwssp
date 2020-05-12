@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:provider/provider.dart';
+
 import '../styles.dart';
+import '../favorite.dart';
+import '../database.dart';
 
 // TODO: Stateful widget?
 class VerseCard extends StatelessWidget {
@@ -62,8 +67,6 @@ class VerseCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(16.0),
             child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -90,12 +93,42 @@ class VerseCard extends StatelessWidget {
                               shape: BoxShape.rectangle,
                               color: Colors.grey.withAlpha(80),
                             ),
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.favorite,
-                                color: Colors.grey,
+                            // TODO: Messy, and also the empty Container thing
+                            // doesn't really work right.
+                            child: Consumer<AppDB>(
+                              builder: (context, db, _) => FutureBuilder<bool>(
+                                future: (() async => (await db.query(
+                                      'favorites',
+                                      where: 'reference = ?',
+                                      whereArgs: [_reference],
+                                    ))
+                                        .isNotEmpty)(),
+                                builder:
+                                    (context, AsyncSnapshot<bool> snapshot) {
+                                  if (snapshot.hasData) {
+                                    if (snapshot.data) {
+                                      return IconButton(
+                                        icon: Icon(Icons.favorite,
+                                            color: palette['red']),
+                                        onPressed: () => db.delete('favorites',
+                                            where: 'reference = ?',
+                                            whereArgs: [_reference]),
+                                      );
+                                    } else {
+                                      return IconButton(
+                                        icon: Icon(Icons.favorite,
+                                            color: palette['grey']),
+                                        onPressed: () => db.insert(
+                                          'favorites',
+                                          Favorite(_reference).toMap(),
+                                        ),
+                                      );
+                                    }
+                                  } else {
+                                    return Container();
+                                  }
+                                },
                               ),
-                              onPressed: () => print('pressed fav'), // TODO
                             ),
                           ),
                         ),
@@ -110,7 +143,7 @@ class VerseCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Spacer(),
+                    // Spacer(),
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: Align(

@@ -1,20 +1,35 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:rwssp/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:rwssp/models/page_model.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 import './pages/home.dart';
 import './pages/settings.dart';
 import './pages/info.dart';
 import './widgets/widgets.dart';
 import './verse.dart';
+import './database.dart';
+import './favorite.dart';
 
-void main() {
+void main() async {
+  // TODO: Necessary? from https://itnext.io/how-to-use-flutter-with-sqlite-b6c75a5215c4
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final db = await AppDB.initDb(version: 1);
+
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => PageModel(),
-      child: MyApp(),
-    ),
+    MultiProvider(providers: [
+      ChangeNotifierProvider<PageModel>(
+        create: (context) => PageModel(),
+      ),
+      ChangeNotifierProvider<AppDB>(
+        create: (context) => db,
+      )
+    ], child: MyApp()),
   );
 }
 
@@ -33,6 +48,11 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
+
+  // TODO
+  /* final Future<Database> database = (() async => openDatabase(
+        join(await getDatabasesPath(), 'doggie_database.db'),
+      ))(); */
 
   final Future<Verse> _verseOfDay = fetchVerseOfDay();
 
