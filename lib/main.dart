@@ -10,10 +10,11 @@ import 'package:sqflite/sqflite.dart';
 import './pages/home.dart';
 import './pages/settings.dart';
 import './pages/info.dart';
+import './pages/favorites.dart';
+
 import './widgets/widgets.dart';
 import './verse.dart';
 import './database.dart';
-import './favorite.dart';
 
 void main() async {
   // TODO: Necessary? from https://itnext.io/how-to-use-flutter-with-sqlite-b6c75a5215c4
@@ -77,6 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
           case AppPage.Info:
             page = InfoPage();
             currentIndex = 2;
+            break;
+          case AppPage.Favorites:
+            page = FavoritesPage();
+            currentIndex = 1;
             break;
           default:
             break;

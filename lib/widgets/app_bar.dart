@@ -174,6 +174,30 @@ PreferredSize _infoPageAppBar(BuildContext context) {
   );
 }
 
+PreferredSize _favoritesPageAppBar(BuildContext context) {
+  return PreferredSize(
+    preferredSize: Size(double.infinity, 110),
+    child: Padding(
+      // TODO: Make this responsive.
+      padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 110,
+        child: Text(
+          'Favorites',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: palette['red'],
+            fontSize: 29,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Roboto',
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 PreferredSize appBar(BuildContext context, {List<TextSpan> text}) {
   var currentPage = Provider.of<PageModel>(context, listen: false).currentPage;
 
@@ -182,6 +206,8 @@ PreferredSize appBar(BuildContext context, {List<TextSpan> text}) {
       return _settingsPageAppBar(context);
     case AppPage.Info:
       return _infoPageAppBar(context);
+    case AppPage.Favorites:
+      return _favoritesPageAppBar(context);
     default:
       break;
   }

@@ -12,58 +12,62 @@ class VerseCard extends StatelessWidget {
   final String _header;
   final String _text;
   final String _reference;
+  final bool _showStartButton;
 
   const VerseCard({
-    @required String header,
+    bool showStartButton = false,
+    String header,
     @required String text,
     @required String reference,
   })  : _header = header,
         _text = text,
-        _reference = reference;
+        _reference = reference,
+        _showStartButton = showStartButton;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: <Widget>[
-          Stack(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 10.0, right: 8.0),
-                  child: RichText(
-                    text: TextSpan(
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Powered by ',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 9,
-                            color: Colors.black,
+          if (_header != null)
+            Stack(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0, right: 8.0),
+                    child: RichText(
+                      text: TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Powered by ',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 9,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text: 'YouVersion',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 9,
-                            color: palette['red'],
+                          TextSpan(
+                            text: 'YouVersion',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 9,
+                              color: palette['red'],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: Text(
-                  _header,
-                  style: TextStyle(fontFamily: 'Montserrat', fontSize: 17),
+                Center(
+                  child: Text(
+                    _header,
+                    style: TextStyle(fontFamily: 'Montserrat', fontSize: 17),
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
           Padding(
             padding: EdgeInsets.all(16.0),
             child: Container(
@@ -134,39 +138,54 @@ class VerseCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 50.0, right: 50.0),
-                      child: Center(
-                        child: Text(
-                          _text,
-                          style: verseCardVerse,
-                        ),
-                      ),
-                    ),
-                    // Spacer(),
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: RaisedButton(
-                          child: Padding(
-                            padding: EdgeInsets.all(6.0),
-                            child: Text(
-                              'START',
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  color: Colors.white,
-                                  letterSpacing: 2.0),
+                    _showStartButton
+                        ? Padding(
+                            padding: EdgeInsets.only(left: 50.0, right: 50.0),
+                            child: Center(
+                              child: Text(
+                                _text,
+                                style: verseCardVerse,
+                              ),
+                            ),
+                          )
+                        // Make sure to pad the text on the bottom
+                        // if the start button isn't there, since it would've
+                        // added the padding.
+                        : Padding(
+                            padding: EdgeInsets.only(
+                                left: 50.0, right: 50.0, bottom: 10.0),
+                            child: Center(
+                              child: Text(
+                                _text,
+                                style: verseCardVerse,
+                              ),
                             ),
                           ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          // TODO
-                          onPressed: () => print('Pressed start button'),
-                          color: palette['red'],
+                    // Spacer(),
+                    if (_showStartButton)
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: RaisedButton(
+                            child: Padding(
+                              padding: EdgeInsets.all(6.0),
+                              child: Text(
+                                'START',
+                                style: TextStyle(
+                                    fontFamily: 'Montserrat',
+                                    color: Colors.white,
+                                    letterSpacing: 2.0),
+                              ),
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            // TODO
+                            onPressed: () => print('Pressed start button'),
+                            color: palette['red'],
+                          ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),

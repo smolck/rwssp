@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
                 header: 'Verse of the Day',
                 text: snapshot.data.text,
                 reference: snapshot.data.ref,
+                showStartButton: true,
               ),
             ],
           );

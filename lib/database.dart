@@ -17,8 +17,6 @@ class AppDB extends ChangeNotifier {
           ),
           onCreate: (db, version) => db.execute(
             'CREATE TABLE favorites(reference TEXT, CONSTRAINT ref_unique UNIQUE (reference))',
-
-            // 'CREATE TABLE favorites(id INTEGER PRIMARY KEY, reference TEXT, CONSTRAINT id_ref_unique UNIQUE (id, reference))',
           ),
           version: version,
         ),
@@ -42,20 +40,6 @@ class AppDB extends ChangeNotifier {
     notifyListeners();
   }
 
-  /* Future<int> newIdFor(String table) async {
-    var ids = (await _db.query(table)).map((x) => x['id']).toList();
-    ids.sort();
-
-    int id;
-    if (ids.length != 0) {
-      id = ids.last + 1;
-    } else {
-      id = 0;
-    }
-
-    return id;
-  } */
-
   Future<void> update(String table, dynamic newData,
       {@required String where, @required List<dynamic> whereArgs}) async {
     await _db.update(table, newData, where: where, whereArgs: whereArgs);
@@ -64,7 +48,7 @@ class AppDB extends ChangeNotifier {
   }
 
   Future<List<Map<String, dynamic>>> query(String table,
-      {@required String where, @required List<dynamic> whereArgs}) async {
+      {String where, List<dynamic> whereArgs}) async {
     final retVal = await _db.query(table, where: where, whereArgs: whereArgs);
 
     notifyListeners();
