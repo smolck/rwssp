@@ -31,13 +31,6 @@ class SearchBar extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 10.0, right: 10.0),
-              child: Row(
-                children: <Widget>[
-                ],
-              ),
-            ),
           ],
         ),
       ),
