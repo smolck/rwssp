@@ -13,7 +13,7 @@ class SearchBar extends StatelessWidget {
       child: Container(
         height: 50,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
+          border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.all(Radius.circular(30.0)),
           shape: BoxShape.rectangle,
         ),
@@ -35,17 +35,6 @@ class SearchBar extends StatelessWidget {
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Row(
                 children: <Widget>[
-                  VerticalDivider(
-                    color: Colors.black,
-                    thickness: 1.0,
-                  ),
-                  Consumer<PageModel>(
-                    builder: (context, pageModel, _) => IconButton(
-                      onPressed: () => pageModel.setCurrentPage(AppPage.Settings),
-                      icon: Icon(OMIcons.settings),
-                      color: palette['red'],
-                    ),
-                  ),
                 ],
               ),
             ),

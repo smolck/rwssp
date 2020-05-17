@@ -32,34 +32,6 @@ class VerseCard extends StatelessWidget {
           if (_header != null)
             Stack(
               children: <Widget>[
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10.0, right: 8.0),
-                    child: RichText(
-                      text: TextSpan(
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: 'Powered by ',
-                            style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontSize: 9,
-                              color: Colors.black,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'YouVersion',
-                            style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontSize: 9,
-                              color: palette['red'],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
                 Center(
                   child: Text(
                     _header,
@@ -72,8 +44,8 @@ class VerseCard extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
                 shape: BoxShape.rectangle,
               ),
               child: Center(
@@ -91,8 +63,8 @@ class VerseCard extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(40.0),
-                                bottomLeft: Radius.circular(40.0),
+                                topLeft: Radius.circular(24.0),
+                                bottomLeft: Radius.circular(24.0),
                               ),
                               shape: BoxShape.rectangle,
                               color: Colors.grey.withAlpha(80),
@@ -179,7 +151,7 @@ class VerseCard extends StatelessWidget {
                               ),
                             ),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
+                                borderRadius: BorderRadius.circular(15)),
                             // TODO
                             onPressed: () => print('Pressed start button'),
                             color: palette['red'],

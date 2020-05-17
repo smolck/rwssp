@@ -11,7 +11,7 @@ Container bottomNavBar(BuildContext context,
       border: Border(
         top: BorderSide(
           style: BorderStyle.solid,
-          color: palette['black'],
+          color: palette['grey'],
         ),
       ),
     ),
