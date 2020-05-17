@@ -43,6 +43,7 @@ TextStyle verseCardTitle = TextStyle(
 TextStyle verseCardVerse = TextStyle(
   color: palette['grey'],
   fontSize: 18.0,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w300,
+  fontStyle: FontStyle.italic,
   fontFamily: 'Montserrat',
 );

@@ -11,7 +11,7 @@ Container bottomNavBar(BuildContext context,
       border: Border(
         top: BorderSide(
           style: BorderStyle.solid,
-          color: palette['black'],
+          color: palette['grey'],
         ),
       ),
     ),
@@ -26,7 +26,7 @@ Container bottomNavBar(BuildContext context,
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            OMIcons.favorite,
+            OMIcons.favoriteBorder,
           ),
           title: Text('Favorites'),
         ),
