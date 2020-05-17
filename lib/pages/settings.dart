@@ -4,13 +4,12 @@ import 'package:provider/provider.dart';
 
 import '../models/page_model.dart';
 import '../styles.dart';
-import './info.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      // TODO: Fix padding?
+      // TODO(smolck): Fix padding?
       child: Padding(
         padding: EdgeInsets.only(left: 24.0),
         child: Column(
@@ -85,7 +84,7 @@ class SettingsPage extends StatelessWidget {
                           textBaseline: TextBaseline.alphabetic,
                             fontFamily: 'Montserrat',
                             fontSize: 22.0,
-                            color: palette['grey']), // TODO: Use 7F7F7F?
+                            color: palette['grey']), // TODO(smolck): Use 7F7F7F?
                       ),
                       WidgetSpan(child: Spacer()),
                     ],

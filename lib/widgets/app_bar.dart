@@ -37,7 +37,7 @@ PreferredSize _settingsPageAppBar(BuildContext context) {
           ),
         ),
 
-        // TODO: Verify colors are consistent with everything and all that.
+        // TODO(smolck): Verify colors are consistent with everything and all that.
         Padding(
           padding: EdgeInsets.only(bottom: 10.0),
           child: Row(
@@ -57,7 +57,7 @@ PreferredSize _settingsPageAppBar(BuildContext context) {
                       left: 34.0, top: 10.0, bottom: 10.0, right: 34.0),
                   child: Text(
                     "ESV",
-                    // TODO: Style
+                    // TODO(smolck): Style.
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 26,
@@ -178,7 +178,7 @@ PreferredSize _favoritesPageAppBar(BuildContext context) {
   return PreferredSize(
     preferredSize: Size(double.infinity, 110),
     child: Padding(
-      // TODO: Make this responsive.
+      // TODO(smolck): Make this responsive.
       padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -218,7 +218,7 @@ PreferredSize appBar(BuildContext context, {List<TextSpan> text}) {
       width: MediaQuery.of(context).size.width,
       height: 110,
       child: Padding(
-        // TODO: Make this responsive.
+        // TODO(smolck): Make this responsive.
         padding: EdgeInsets.fromLTRB(10, 40, 0, 0),
         child: RichText(
           text: TextSpan(

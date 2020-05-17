@@ -24,8 +24,9 @@ class HomePage extends StatelessWidget {
               ),
             ],
           );
-        } else {
-          return Center(child: CircularProgressIndicator()); // TODO
+        } else { 
+          // TODO(smolck): Error handling, don't just show a forever loading spinner.
+          return Center(child: CircularProgressIndicator());
         }
       },
     );

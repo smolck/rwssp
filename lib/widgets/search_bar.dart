@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:rwssp/models/page_model.dart';
-import 'package:outline_material_icons/outline_material_icons.dart';
-
-import '../styles.dart';
 
 class SearchBar extends StatelessWidget {
   @override

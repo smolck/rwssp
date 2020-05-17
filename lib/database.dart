@@ -28,7 +28,7 @@ class AppDB extends ChangeNotifier {
 
       notifyListeners();
     } on DatabaseException {
-      // TODO (?)
+      // TODO(smolck): Error handling
       print('Already in database.');
     }
   }

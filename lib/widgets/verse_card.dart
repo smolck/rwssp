@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:provider/provider.dart';
 
 import '../styles.dart';
 import '../favorite.dart';
 import '../database.dart';
 
-// TODO: Stateful widget?
 class VerseCard extends StatelessWidget {
   final String _header;
   final String _text;
@@ -56,7 +54,7 @@ class VerseCard extends StatelessWidget {
                       children: <Widget>[
                         Container(
                             width: 32.0,
-                            height: 0.0), // TODO: Not 100% sure why this works.
+                            height: 0.0), // TODO(smolck): Not 100% sure why this works.
                         Text(_reference, style: verseCardTitle),
                         Padding(
                           padding: EdgeInsets.only(top: 18.0),
@@ -69,7 +67,8 @@ class VerseCard extends StatelessWidget {
                               shape: BoxShape.rectangle,
                               color: Colors.grey.withAlpha(80),
                             ),
-                            // TODO: Messy, and also the empty Container thing
+
+                            // TODO(smolck): Messy, and also the empty Container thing
                             // doesn't really work right.
                             child: Consumer<AppDB>(
                               builder: (context, db, _) => FutureBuilder<bool>(
@@ -90,7 +89,7 @@ class VerseCard extends StatelessWidget {
                                             where: 'reference = ?',
                                             whereArgs: [_reference]),
                                       );
-                                      //TODO (Robotboy897): Snackbar favorited message?
+                                      // TODO (Robotboy897): Snackbar favorited message?
                                     } else {
                                       return IconButton(
                                         icon: Icon(Icons.favorite,
@@ -153,7 +152,7 @@ class VerseCard extends StatelessWidget {
                             ),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
-                            // TODO
+                            // TODO(smolck): Implement start functionality.
                             onPressed: () => print('Pressed start button'),
                             color: palette['red'],
                           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/widgets.dart' show appBar;
 import '../styles.dart' show infoPageHeader, infoPageText;
 
 const infoText = {

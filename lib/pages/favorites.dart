@@ -18,7 +18,7 @@ class FavoritesPage extends StatelessWidget {
           }(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              // TODO
+              // TODO(smolck): Store reference in DB and use it here.
               final children = snapshot.data
                   .map((x) => VerseCard(
                         text: 'TODO',
@@ -30,7 +30,7 @@ class FavoritesPage extends StatelessWidget {
                 children: children,
               );
             } else {
-              // TODO
+              // TODO(smolck): Error handling.
               return Center(
                 child: CircularProgressIndicator(),
               );
