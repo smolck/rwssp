@@ -26,7 +26,7 @@ Container bottomNavBar(BuildContext context,
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            OMIcons.favorite,
+            OMIcons.favoriteBorder,
           ),
           title: Text('Favorites'),
         ),

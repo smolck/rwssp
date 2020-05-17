@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:rwssp/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:rwssp/models/page_model.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+
+import './styles.dart';
 
 import './pages/home.dart';
 import './pages/settings.dart';
@@ -17,7 +17,7 @@ import './verse.dart';
 import './database.dart';
 
 void main() async {
-  // TODO: Necessary? from https://itnext.io/how-to-use-flutter-with-sqlite-b6c75a5215c4
+  // TODO(smolck): Necessary? from https://itnext.io/how-to-use-flutter-with-sqlite-b6c75a5215c4
   WidgetsFlutterBinding.ensureInitialized();
 
   final db = await AppDB.initDb(version: 1);
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'RWSSP',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: palette['red'],
       ),
       home: MyHomePage(title: 'RWSSP Home Page'),
     );
@@ -49,11 +49,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // TODO
-  /* final Future<Database> database = (() async => openDatabase(
-        join(await getDatabasesPath(), 'doggie_database.db'),
-      ))(); */
 
   final Future<Verse> _verseOfDay = fetchVerseOfDay();
 
@@ -85,7 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
             break;
           default:
             break;
-          // TODO: Favorites page.
         }
         return Scaffold(
           backgroundColor: Colors.white,
