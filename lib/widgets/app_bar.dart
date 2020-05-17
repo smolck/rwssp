@@ -1,133 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:rwssp/models/page_model.dart';
 import 'package:provider/provider.dart';
-import 'package:outline_material_icons/outline_material_icons.dart';
 
 import '../styles.dart';
 
 PreferredSize _settingsPageAppBar(BuildContext context) {
   return PreferredSize(
-    preferredSize: Size(double.infinity, 220),
-    child: Column(
-      children: <Widget>[
-        // "Settings" widget
-        Padding(
-          padding: EdgeInsets.only(top: 10.0, left: 30.0, right: 30.0),
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: 120,
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Icon(
-                      OMIcons.settings,
-                      size: 50,
-                    ),
-                  ),
-                  Text(
-                    'Settings',
-                    style: TextStyle(fontFamily: 'Montserrat', fontSize: 38),
-                  ),
-                ],
-              ),
-            ),
+    preferredSize: Size(double.infinity, 130),
+    child: Padding(
+      // TODO(smolck): Make this responsive.
+      padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 130,
+        child: Text(
+          'Settings',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: palette['red'],
+            fontSize: 29,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Roboto',
           ),
         ),
-
-        // TODO(smolck): Verify colors are consistent with everything and all that.
-        Padding(
-          padding: EdgeInsets.only(bottom: 10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // ESV Container
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(24.0),
-                    bottomLeft: Radius.circular(24.0),
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      left: 34.0, top: 10.0, bottom: 10.0, right: 34.0),
-                  child: Text(
-                    "ESV",
-                    // TODO(smolck): Style.
-                    style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 26,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ),
-
-              // NIV Container
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: 10.0, bottom: 10.0, left: 34.0, right: 34.0),
-                  child: Text(
-                    "NIV",
-                    style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 26,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ),
-
-              // KJV Container
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(24.0),
-                    bottomRight: Radius.circular(24.0),
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: 10.0, bottom: 10.0, right: 34.0, left: 34.0),
-                  child: Text(
-                    "KJV",
-                    style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 26,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 16.0),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Consumer<PageModel>(
-              builder: (context, pageModel, _) => IconButton(
-                onPressed: () => pageModel.setCurrentPage(AppPage.Home),
-                icon: Icon(
-                  Icons.arrow_back,
-                  size: 24,
-                  color: palette['black'],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
+      ),
     ),
   );
 }
