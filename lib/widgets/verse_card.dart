@@ -90,6 +90,7 @@ class VerseCard extends StatelessWidget {
                                             where: 'reference = ?',
                                             whereArgs: [_reference]),
                                       );
+                                      //TODO: Snackbar favorited message?
                                     } else {
                                       return IconButton(
                                         icon: Icon(Icons.favorite,
