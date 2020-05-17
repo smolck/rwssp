@@ -16,7 +16,7 @@ class AppDB extends ChangeNotifier {
             'database.db',
           ),
           onCreate: (db, version) => db.execute(
-            'CREATE TABLE favorites(reference TEXT, CONSTRAINT ref_unique UNIQUE (reference))',
+            'CREATE TABLE favorites(reference TEXT, text TEXT, CONSTRAINT ref_unique UNIQUE (reference))',
           ),
           version: version,
         ),
@@ -27,9 +27,9 @@ class AppDB extends ChangeNotifier {
       await _db.insert(table, data);
 
       notifyListeners();
-    } on DatabaseException {
+    } on DatabaseException catch (e) {
       // TODO(smolck): Error handling
-      print('Already in database.');
+      print(e);
     }
   }
 

@@ -1,11 +1,11 @@
 class Favorite {
-  // final int id;
+  final String text;
   final String reference;
 
-  Favorite(/* this.id, */ this.reference);
+  Favorite(this.reference, this.text);
 
   Map<String, dynamic> toMap() => {
-        // 'id': id,
+        'text': text,
         'reference': reference,
       };
 }

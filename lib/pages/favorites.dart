@@ -9,20 +9,21 @@ class FavoritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AppDB>(
       builder: (context, appDb, _) {
-        return FutureBuilder<List<String>>(
+        return FutureBuilder<List<List<String>>>(
           future: () async {
             final favorites =
                 await Provider.of<AppDB>(context).query('favorites');
 
-            return favorites.map((x) => x['reference'] as String).toList();
+            return favorites
+                .map((x) => [x['reference'] as String, x['text'] as String])
+                .toList();
           }(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              // TODO(smolck): Store reference in DB and use it here.
               final children = snapshot.data
                   .map((x) => VerseCard(
-                        text: 'TODO',
-                        reference: x,
+                        reference: x[0],
+                        text: x[1],
                       ))
                   .toList();
 

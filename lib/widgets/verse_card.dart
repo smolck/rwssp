@@ -96,7 +96,7 @@ class VerseCard extends StatelessWidget {
                                             color: palette['grey']),
                                         onPressed: () => db.insert(
                                           'favorites',
-                                          Favorite(_reference).toMap(),
+                                          Favorite(_reference, _text).toMap(),
                                         ),
                                       );
                                     }
