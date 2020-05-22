@@ -22,6 +22,58 @@ class VerseCard extends StatelessWidget {
         _reference = reference,
         _showStartButton = showStartButton;
 
+  Padding _favoriteButton() => Padding(
+        padding: EdgeInsets.only(top: 18.0),
+        child: Container(
+          // TODO(smolck): Maybe bigger dimensions here?
+          width: 34.0,
+          height: 34.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24.0),
+              bottomLeft: Radius.circular(24.0),
+            ),
+            shape: BoxShape.rectangle,
+            color: Colors.grey.withAlpha(80),
+          ),
+          child: Consumer<AppDB>(
+            builder: (context, db, _) => FutureBuilder<bool>(
+              future: (() async => (await db.query(
+                    'favorites',
+                    where: 'reference = ?',
+                    whereArgs: [_reference],
+                  ))
+                      .isNotEmpty)(),
+              builder: (context, AsyncSnapshot<bool> snapshot) {
+                if (snapshot.hasData) {
+                  // TODO(Robotboy897): Snackbar favorited message?
+                  return IconButton(
+                    icon: Icon(
+                      Icons.favorite,
+                      color: snapshot.data ? palette['red'] : palette['grey'],
+                    ),
+                    iconSize: 17.0,
+                    onPressed: snapshot.data
+                        ? () => db.delete(
+                              'favorites',
+                              where: 'reference = ?',
+                              whereArgs: [_reference],
+                            )
+                        : () => db.insert(
+                              'favorites',
+                              Favorite(_reference, _text).toMap(),
+                            ),
+                  );
+                } else {
+                  // TODO(smolck): Proper error handling.
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
+          ),
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -40,12 +92,10 @@ class VerseCard extends StatelessWidget {
             ),
           Padding(
             padding: EdgeInsets.all(16.0),
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                shape: BoxShape.rectangle,
-              ),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(22)),
+              elevation: 2,
               child: Center(
                 child: Column(
                   children: <Widget>[
@@ -53,90 +103,31 @@ class VerseCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Container(
-                            width: 32.0,
-                            height: 0.0), // TODO(smolck): Not 100% sure why this works.
-                        Text(_reference, style: verseCardTitle),
-                        Padding(
-                          padding: EdgeInsets.only(top: 18.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(24.0),
-                                bottomLeft: Radius.circular(24.0),
-                              ),
-                              shape: BoxShape.rectangle,
-                              color: Colors.grey.withAlpha(80),
-                            ),
-
-                            // TODO(smolck): Messy, and also the empty Container thing
-                            // doesn't really work right.
-                            child: Consumer<AppDB>(
-                              builder: (context, db, _) => FutureBuilder<bool>(
-                                future: (() async => (await db.query(
-                                      'favorites',
-                                      where: 'reference = ?',
-                                      whereArgs: [_reference],
-                                    ))
-                                        .isNotEmpty)(),
-                                builder:
-                                    (context, AsyncSnapshot<bool> snapshot) {
-                                  if (snapshot.hasData) {
-                                    if (snapshot.data) {
-                                      return IconButton(
-                                        icon: Icon(Icons.favorite,
-                                            color: palette['red']),
-                                        onPressed: () => db.delete('favorites',
-                                            where: 'reference = ?',
-                                            whereArgs: [_reference]),
-                                      );
-                                      // TODO (Robotboy897): Snackbar favorited message?
-                                    } else {
-                                      return IconButton(
-                                        icon: Icon(Icons.favorite,
-                                            color: palette['grey']),
-                                        onPressed: () => db.insert(
-                                          'favorites',
-                                          Favorite(_reference, _text).toMap(),
-                                        ),
-                                      );
-                                    }
-                                  } else {
-                                    return Container();
-                                  }
-                                },
-                              ),
-                            ),
-                          ),
+                          width: 32.0,
+                          height: 0.0,
                         ),
+                        // TODO(smolck): Not sure this is actually centered.
+                        Text(_reference, style: verseCardTitle),
+                        _favoriteButton(),
                       ],
                     ),
-                    _showStartButton
-                        ? Padding(
-                            padding: EdgeInsets.only(left: 50.0, right: 50.0),
-                            child: Center(
-                              child: Text(
-                                _text,
-                                style: verseCardVerse,
-                              ),
-                            ),
-                          )
-                        // Make sure to pad the text on the bottom
-                        // if the start button isn't there, since it would've
-                        // added the padding.
-                        : Padding(
-                            padding: EdgeInsets.only(
-                                left: 50.0, right: 50.0, bottom: 10.0),
-                            child: Center(
-                              child: Text(
-                                _text,
-                                style: verseCardVerse,
-                              ),
-                            ),
-                          ),
-                    // Spacer(),
+                    Padding(
+                      padding: _showStartButton
+                          ? EdgeInsets.only(left: 50.0, right: 50.0)
+                          // Make sure to pad text on bottom if no start button.
+                          : EdgeInsets.only(
+                              left: 50.0, right: 50.0, bottom: 30.0),
+                      child: Center(
+                        child: Text(_text, style: verseCardVerse),
+                      ),
+                    ),
                     if (_showStartButton)
                       Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: EdgeInsets.only(
+                          right: 10.0,
+                          bottom: 10.0,
+                          top: 30.0,
+                        ),
                         child: Align(
                           alignment: Alignment.bottomRight,
                           child: RaisedButton(
@@ -145,9 +136,10 @@ class VerseCard extends StatelessWidget {
                               child: Text(
                                 'START',
                                 style: TextStyle(
-                                    fontFamily: 'Montserrat',
-                                    color: Colors.white,
-                                    letterSpacing: 2.0),
+                                  fontFamily: 'Montserrat',
+                                  color: Colors.white,
+                                  letterSpacing: 2.0,
+                                ),
                               ),
                             ),
                             shape: RoundedRectangleBorder(
