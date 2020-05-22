@@ -95,7 +95,7 @@ class VerseCard extends StatelessWidget {
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(22)),
-              elevation: 2,
+              elevation: 3,
               child: Center(
                 child: Column(
                   children: <Widget>[
