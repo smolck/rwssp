@@ -30,7 +30,7 @@ PreferredSize _settingsPageAppBar(BuildContext context) {
 
 PreferredSize _infoPageAppBar(BuildContext context) {
   final backButton = Padding(
-    padding: EdgeInsets.only(left: 16.0, top: 16.0),
+    padding: EdgeInsets.only(left: 16.0, top: 10.0),
     child: Align(
       alignment: Alignment.centerLeft,
       child: Consumer<PageModel>(
@@ -47,19 +47,28 @@ PreferredSize _infoPageAppBar(BuildContext context) {
   );
 
   return PreferredSize(
-    preferredSize: Size(double.infinity, 175),
+    preferredSize: Size(double.infinity, 190),
     child: Container(
       width: MediaQuery.of(context).size.width,
-      height: 175,
+      height: 190,
       child: Column(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(10, 40, 0, 0),
-            child: RichText(
-              text: TextSpan(
-                text:
-                    'What Exactly Is "Read. Write it. Sing it. Say it. Pray it."?',
-                style: appBarTextStyle,
+          Container(
+            height: 130,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fitWidth,
+                colorFilter: ColorFilter.mode(
+                    Color.fromRGBO(154, 27, 31, 0.56), BlendMode.srcATop),
+                image: AssetImage('assets/infopageimg.png'),
+              ),
+            ),
+            child: Center(
+              child: RichText(
+                text: TextSpan(
+                  text: 'What exactly is\nRWSSP?',
+                  style: appBarTextStyle.apply(color: Colors.white),
+                ),
               ),
             ),
           ),

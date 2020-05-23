@@ -8,15 +8,17 @@ const palette = {
 };
 
 TextStyle infoPageHeader = TextStyle(
-  color: palette['black'],
+  color: palette['red'],
   fontSize: 24.0,
   fontFamily: 'Roboto',
+  fontWeight: FontWeight.bold,
 );
 
 TextStyle infoPageText = TextStyle(
   color: palette['grey'],
-  fontSize: 20.0,
+  fontSize: 18.0,
   fontFamily: 'Roboto',
+  fontWeight: FontWeight.w300,
 );
 
 TextStyle appBarTextStyle = TextStyle(
