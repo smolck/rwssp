@@ -48,7 +48,7 @@ You can choose another one to start memorizing or just be glad that you've inter
   Padding _card(BuildContext context, String headerText, String infoText) => Padding(
         padding: EdgeInsets.only(bottom: 20.0),
         child: Card(
-          elevation: 3,
+          elevation: 0.0,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
           child: Column(

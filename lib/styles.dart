@@ -4,7 +4,7 @@ const palette = {
   'red': const Color(0xFF9A1B1F),
   'grey': const Color(0xFF707070),
   'lighter_grey': const Color(0xFF7F7F7F),
-  'black': const Color(0xFF484848),
+  'black': const Color(0xFF313131),
 };
 
 TextStyle infoPageHeader({@required Color color}) => TextStyle(

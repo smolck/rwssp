@@ -97,6 +97,7 @@ class VerseCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
             child: Card(
+              elevation: 0.0,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(22)),
               color: const Color(0xFFF9F9F9),
