@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         if (snapshot.hasData) {
           return Column(
             children: <Widget>[
-              SearchBar(),
+              Padding(padding: EdgeInsets.only(bottom: 24.0), child: SearchBar()),
               VerseCard(
                 header: 'Verse of the Day',
                 text: snapshot.data.text,
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
               ),
             ],
           );
-        } else { 
+        } else {
           // TODO(smolck): Error handling, don't just show a forever loading spinner.
           return Center(child: CircularProgressIndicator());
         }

@@ -7,8 +7,8 @@ const palette = {
   'black': const Color(0xFF484848),
 };
 
-TextStyle infoPageHeader = TextStyle(
-  color: palette['red'],
+TextStyle infoPageHeader({@required Color color}) => TextStyle(
+  color: color,
   fontSize: 24.0,
   fontFamily: 'Roboto',
   fontWeight: FontWeight.bold,
@@ -35,11 +35,11 @@ TextStyle selectedAppBarTextStyle = TextStyle(
   fontFamily: 'Roboto',
 );
 
-TextStyle verseCardTitle = TextStyle(
-  color: palette['red'],
+TextStyle verseCardTitle({@required Color color}) => TextStyle(
+  color: color,
   fontSize: 20.0,
   fontWeight: FontWeight.bold,
-  fontFamily: 'Roboto',
+  fontFamily: 'Montserrat',
 );
 
 TextStyle verseCardVerse = TextStyle(

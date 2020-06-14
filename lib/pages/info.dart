@@ -12,7 +12,7 @@ This is the first step; read the Scripture you want to memorize. We recommend 10
 As the second step, it's as simple as it sounds. You write the verse (recommended 10 times) to further solidify the Scripture verse in your mind.
     """,
     'singIt': """
-Here, you sing the verse. It doesn't have to be with an elaborate song, nor does it have to be set to music. 
+Here, you sing the verse. It doesn't have to be with an elaborate song, nor does it have to be set to music.
 Nope; just sing it to the Lord however many times you wish, although doing so at least twice will be helpful for memorization.
     """,
     'sayIt': """
@@ -27,10 +27,11 @@ You can choose another one to start memorizing or just be glad that you've inter
     """
   };
 
-  Padding _header(String text) => Padding(
+  Padding _header(BuildContext context, String text) => Padding(
         padding: EdgeInsets.only(bottom: 20.0, top: 35.0),
         child: Center(
-          child: Text(text, style: infoPageHeader),
+          child: Text(text, style: infoPageHeader(color:
+                  Theme.of(context).primaryColor)),
         ),
       );
 
@@ -44,7 +45,7 @@ You can choose another one to start memorizing or just be glad that you've inter
         ),
       );
 
-  Padding _card(String headerText, String infoText) => Padding(
+  Padding _card(BuildContext context, String headerText, String infoText) => Padding(
         padding: EdgeInsets.only(bottom: 20.0),
         child: Card(
           elevation: 3,
@@ -52,7 +53,7 @@ You can choose another one to start memorizing or just be glad that you've inter
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
           child: Column(
             children: <Widget>[
-              _header(headerText),
+              _header(context, headerText),
               _description(infoText),
             ],
           ),
@@ -72,11 +73,11 @@ You can choose another one to start memorizing or just be glad that you've inter
           },
           child: ListView(
             children: <Widget>[
-              _card("R - Read It.", _infoText['readIt']),
-              _card("W - Write It.", _infoText['writeIt']),
-              _card("S - Sing It.", _infoText['singIt']),
-              _card("S - Say It.", _infoText['sayIt']),
-              _card("P - Pray It.", _infoText['prayIt']),
+              _card(context, "R - Read It.", _infoText['readIt']),
+              _card(context, "W - Write It.", _infoText['writeIt']),
+              _card(context, "S - Sing It.", _infoText['singIt']),
+              _card(context, "S - Say It.", _infoText['sayIt']),
+              _card(context, "P - Pray It.", _infoText['prayIt']),
             ],
           ),
         ),

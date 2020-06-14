@@ -23,18 +23,17 @@ class VerseCard extends StatelessWidget {
         _showStartButton = showStartButton;
 
   Padding _favoriteButton() => Padding(
-        padding: EdgeInsets.only(top: 18.0),
+        padding: EdgeInsets.all(8.0),
         child: Container(
           // TODO(smolck): Maybe bigger dimensions here?
-          width: 34.0,
-          height: 34.0,
+          width: 36.0,
+          height: 36.0,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(24.0),
-              bottomLeft: Radius.circular(24.0),
+            borderRadius: BorderRadius.circular(12.0),
+            border: Border.all(
+              color: const Color(0xFFBEBEBE),
+              width: 0.5,
             ),
-            shape: BoxShape.rectangle,
-            color: Colors.grey.withAlpha(80),
           ),
           child: Consumer<AppDB>(
             builder: (context, db, _) => FutureBuilder<bool>(
@@ -50,9 +49,11 @@ class VerseCard extends StatelessWidget {
                   return IconButton(
                     icon: Icon(
                       Icons.favorite,
-                      color: snapshot.data ? palette['red'] : palette['grey'],
+                      color: snapshot.data
+                          ? Theme.of(context).primaryColor
+                          : palette['grey'],
                     ),
-                    iconSize: 17.0,
+                    iconSize: 15.0,
                     onPressed: snapshot.data
                         ? () => db.delete(
                               'favorites',
@@ -85,31 +86,30 @@ class VerseCard extends StatelessWidget {
                 Center(
                   child: Text(
                     _header,
-                    style: TextStyle(fontFamily: 'Montserrat', fontSize: 17),
+                    style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300),
                   ),
                 ),
               ],
             ),
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(22)),
-              elevation: 3,
+              color: const Color(0xFFF9F9F9),
               child: Center(
                 child: Column(
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          width: 32.0,
-                          height: 0.0,
-                        ),
-                        // TODO(smolck): Not sure this is actually centered.
-                        Text(_reference, style: verseCardTitle),
-                        _favoriteButton(),
-                      ],
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 13.0, top: 24.0),
+                      child: Text(
+                        _reference,
+                        style: verseCardTitle(
+                            color: Theme.of(context).primaryColor),
+                      ),
                     ),
                     Padding(
                       padding: _showStartButton
@@ -128,26 +128,32 @@ class VerseCard extends StatelessWidget {
                           bottom: 10.0,
                           top: 30.0,
                         ),
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: RaisedButton(
-                            child: Padding(
-                              padding: EdgeInsets.all(6.0),
-                              child: Text(
-                                'START',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  color: Colors.white,
-                                  letterSpacing: 2.0,
+                        child: Row(
+                          children: <Widget>[
+                            _favoriteButton(),
+                            ButtonTheme(
+                              height: 36.0,
+                              minWidth: 213.0,
+                              child: RaisedButton(
+                                child: Padding(
+                                  padding: EdgeInsets.all(6.0),
+                                  child: Text(
+                                    'START',
+                                    style: TextStyle(
+                                      fontFamily: 'Montserrat',
+                                      color: Colors.white,
+                                      letterSpacing: 2.0,
+                                    ),
+                                  ),
                                 ),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                // TODO(smolck): Implement start functionality.
+                                onPressed: () => print('Pressed start button'),
+                                color: Theme.of(context).primaryColor,
                               ),
                             ),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15)),
-                            // TODO(smolck): Implement start functionality.
-                            onPressed: () => print('Pressed start button'),
-                            color: palette['red'],
-                          ),
+                          ],
                         ),
                       ),
                   ],

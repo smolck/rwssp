@@ -50,7 +50,7 @@ Container bottomNavBar(BuildContext context,
         onTapHandler(page);
       },
       backgroundColor: Colors.white,
-      selectedItemColor: palette['red'],
+      selectedItemColor: Theme.of(context).primaryColor,
       selectedLabelStyle: TextStyle(color: palette['red']),
     ),
   );

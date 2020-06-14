@@ -8,8 +8,8 @@ class SearchBar extends StatelessWidget {
       child: Container(
         height: 50,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.all(Radius.circular(30.0)),
+          color: const Color(0xFFF9F9F9),
           shape: BoxShape.rectangle,
         ),
         child: Row(

@@ -40,7 +40,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'RWSSP',
       theme: ThemeData(
-        primaryColor: palette['red'],
+        primaryColor: const Color(0xFF148561),
+        appBarTheme: AppBarTheme(color: palette['black'])
       ),
       home: MyHomePage(title: 'RWSSP Home Page'),
     );

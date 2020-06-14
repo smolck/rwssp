@@ -17,7 +17,7 @@ PreferredSize _settingsPageAppBar(BuildContext context) {
           'Settings',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: palette['red'],
+            color: Theme.of(context).appBarTheme.color,
             fontSize: 29,
             fontWeight: FontWeight.bold,
             fontFamily: 'Roboto',
@@ -59,7 +59,9 @@ PreferredSize _infoPageAppBar(BuildContext context) {
               image: DecorationImage(
                 fit: BoxFit.fitWidth,
                 colorFilter: ColorFilter.mode(
-                    Color.fromRGBO(154, 27, 31, 0.56), BlendMode.srcATop),
+                  Theme.of(context).primaryColor.withOpacity(0.56),
+                  BlendMode.srcATop,
+                ),
                 image: AssetImage('assets/infopageimg.png'),
               ),
             ),
@@ -92,7 +94,7 @@ PreferredSize _favoritesPageAppBar(BuildContext context) {
           'Favorites',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: palette['red'],
+            color: Theme.of(context).primaryColor,
             fontSize: 29,
             fontWeight: FontWeight.bold,
             fontFamily: 'Roboto',
