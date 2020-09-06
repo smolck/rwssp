@@ -21,7 +21,7 @@ point, and several areas need work, like test coverage, fonts, colors, etc.
 
 # App Design
 
-I take no credit for this app's design; all credit goes to [Christopher Hagedon](https://github.com/Robotboy897) (email: chrishagedon@gmail.com).
+I take no credit for this app's design; all credit goes to [Christopher Hagedon](https://github.com/Robotboy897).
 This app wouldn't be possible without the incredible work he's doing and has put in!
 
 # Running the App
